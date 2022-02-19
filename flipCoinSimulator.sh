@@ -26,7 +26,17 @@ then
 	difT=$(( $tailcount - $headcount ))
 	echo Tail count is $tailcount
 	echo Tail won by $difT Head counts.
-elif [ $headcount == 21 ] && [ $tailcount == 21 ]
-then
+elif [ $headcount == 21 ] && [ $tailcount == 21]
+  then
 	echo It is a tie
+    while [ $headcount -gt $(($tailcount + 2))  ] || [ $tailcount -gt $(($headcount + 2 ))  ]
+    do
+    	random1=$(($RANDOM%2));
+      if [ random1 == $head  ]
+      then
+      	((headcount++));
+      else
+      	((tailcount++));
+      fi
+    done
 fi
